@@ -7,9 +7,14 @@ find_path(WinEditLine_INCLUDE_DIR
     NAMES editline/readline.h
 )
 
+set(_saved_suffixes ${CMAKE_FIND_LIBRARY_SUFFIXES})
+set(CMAKE_FIND_LIBRARY_SUFFIXES .a .dll.a .lib)
+
 find_library(WinEditLine_LIBRARY
     NAMES edit_static edit
 )
+
+set(CMAKE_FIND_LIBRARY_SUFFIXES ${_saved_suffixes})
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(WinEditLine
