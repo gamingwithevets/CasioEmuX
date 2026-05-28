@@ -7,14 +7,21 @@ find_path(WinEditLine_INCLUDE_DIR
     NAMES editline/readline.h
 )
 
-set(_saved_suffixes ${CMAKE_FIND_LIBRARY_SUFFIXES})
-set(CMAKE_FIND_LIBRARY_SUFFIXES .a .dll.a .lib)
+if(WIN32)
+    # Prefer static archive (.a) over import lib (.dll.a) on MinGW
+    set(_saved_suffixes ${CMAKE_FIND_LIBRARY_SUFFIXES})
+    set(CMAKE_FIND_LIBRARY_SUFFIXES .a .dll.a .lib)
+endif()
 
+# edit_static: standalone wineditline install; edit: MSYS2 package name
 find_library(WinEditLine_LIBRARY
     NAMES edit_static edit
 )
 
-set(CMAKE_FIND_LIBRARY_SUFFIXES ${_saved_suffixes})
+if(WIN32)
+    set(CMAKE_FIND_LIBRARY_SUFFIXES ${_saved_suffixes})
+    unset(_saved_suffixes)
+endif()
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(WinEditLine
