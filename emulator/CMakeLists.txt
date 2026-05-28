@@ -68,15 +68,15 @@ target_include_directories(casioemu PRIVATE
     ${LUA_INCLUDE_DIR}
 )
 
+if(TARGET SDL2::SDL2main)
+    target_link_libraries(casioemu PRIVATE SDL2::SDL2main)
+endif()
+
 target_link_libraries(casioemu PRIVATE
     SDL2::SDL2
     SDL2_image::SDL2_image
     ${LUA_LIBRARIES}
 )
-
-if(TARGET SDL2::SDL2main)
-    target_link_libraries(casioemu PRIVATE SDL2::SDL2main)
-endif()
 
 if(WIN32)
     find_package(WinEditLine REQUIRED)
