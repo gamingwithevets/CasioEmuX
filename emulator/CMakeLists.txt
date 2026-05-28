@@ -61,27 +61,29 @@ target_compile_options(casioemu PRIVATE
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
-find_package(Lua 5.3 REQUIRED)
+find_package(Lua 5.3 EXACT REQUIRED)
 
 target_include_directories(casioemu PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${LUA_INCLUDE_DIR}
 )
 
 target_link_libraries(casioemu PRIVATE
     SDL2::SDL2
-    SDL2::SDL2main
     SDL2_image::SDL2_image
     ${LUA_LIBRARIES}
 )
+
+if(TARGET SDL2::SDL2main)
+    target_link_libraries(casioemu PRIVATE SDL2::SDL2main)
+endif()
 
 if(WIN32)
     find_package(WinEditLine REQUIRED)
     target_link_libraries(casioemu PRIVATE WinEditLine::WinEditLine)
 else()
     find_library(EDITLINE_LIB NAMES edit REQUIRED)
-    find_path(EDITLINE_INCLUDE_DIR NAMES editline/readline.h histedit.h)
-    if(EDITLINE_INCLUDE_DIR)
-        target_include_directories(casioemu PRIVATE ${EDITLINE_INCLUDE_DIR})
-    endif()
+    find_path(EDITLINE_INCLUDE_DIR NAMES editline/readline.h REQUIRED)
+    target_include_directories(casioemu PRIVATE ${EDITLINE_INCLUDE_DIR})
     target_link_libraries(casioemu PRIVATE ${EDITLINE_LIB})
 endif()
