@@ -1,4 +1,4 @@
 *.exe
 .claude
 build/
-docs/superpowers
+docs/superpowers/
