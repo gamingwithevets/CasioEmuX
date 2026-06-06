@@ -1,8 +1,8 @@
-NOTE: This is a **modified** version of the Casio emulator developed by [LBPHacker](../../../../LBPHacker) and [user202729](../../../../user202729) which supports ClassWiz II models.
+NOTE: This is a **modified** version of the Casio emulator developed by [LBPHacker](../../../../LBPHacker) and [user202729](../../../../user202729).
 
-Files are modified so that they can work on windows.
+The build script has been replaced with CMake.
 
-This repository will get updated with new models in the `models` folder. Note that ROMs are **not** included (for copyright reasons), you have to obtain one from somewhere else or dump it from a real calculator or emulator. (note that models labeled with `_emu` are for ROMs dumped from official emulators)
+Note that ROMs are **not** included (for copyright reasons), you have to obtain one from somewhere else or dump it from a real calculator or emulator. (note that models labeled with `_emu` are for ROMs dumped from official emulators)
 
 
 # CasioEmuX
