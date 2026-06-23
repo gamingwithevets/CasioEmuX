@@ -1,7 +1,5 @@
 NOTE: This is a **modified** version of the Casio emulator developed by [LBPHacker](../../../../LBPHacker) and [user202729](../../../../user202729).
 
-The build script has been replaced with CMake.
-
 Note that ROMs are **not** included (for copyright reasons), you have to obtain one from somewhere else or dump it from a real calculator or emulator. (note that models labeled with `_emu` are for ROMs dumped from official emulators)
 
 
@@ -12,7 +10,7 @@ With debuggers.
 
 The model.lua configured for ClassWiz II models is included in models/fx991cw_emu.
 
-To build it, install tdm-gcc and run build.bat
+The build script has been replaced with CMake.
 
 ## Command-line arguments
 
